@@ -1,5 +1,6 @@
 import express from 'express'
 import ProductController from './src/controllers/product.controller.js';
+import expressEjsLayouts from 'express-ejs-layouts';
 
 import path from 'path';
 
@@ -10,6 +11,8 @@ server.set("view engine", "ejs");
 // path of our views
 server.set("views", path.join(path.resolve(),"src",'views')); 
 
+server.use(expressEjsLayouts)
+
 // create an instance of ProductController
 const productController = new ProductController(); 
 server.get('/', (productController.getProducts));
@@ -17,4 +20,4 @@ server.get('/', (productController.getProducts));
 server.use(express.static('src/views'));
 
 server.listen(3400);
-console.log('Server is listening on port 3400');
+console.log('Server is listing at 3400');
