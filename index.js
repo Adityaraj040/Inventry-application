@@ -16,6 +16,8 @@ server.use(ejsLayouts);
 // Create an instance of ProductController
 const productController = new ProductController(); 
 server.get('/', productController.getProducts);
+server.get('/new', productController.getAddForm)
+server.post('/', productController.addNewProduct)
 
 // Serve static files from the 'src/views' directory
 server.use(express.static('src/views'));
